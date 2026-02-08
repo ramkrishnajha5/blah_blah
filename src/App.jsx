@@ -558,24 +558,14 @@ const MobileQuestionModal = ({ question, questionNumber, totalQuestions, onYes, 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm">
       <div className="glass bg-white/95 rounded-3xl p-6 md:p-8 max-w-md w-full text-center shadow-2xl animate-fade-in-up">
-        {/* Progress */}
-        <div className="mb-4">
-          <div className="w-full bg-gray-200 rounded-full h-2">
-            <div
-              className="bg-gradient-to-r from-pink-500 to-red-500 h-2 rounded-full transition-all duration-300"
-              style={{ width: `${(questionNumber / totalQuestions) * 100}%` }}
-            />
-          </div>
-          <p className="text-xs text-gray-500 mt-1">Question {questionNumber} of {totalQuestions}</p>
-        </div>
-
-        {/* Emoji */}
-        <div className="text-6xl mb-4 animate-bounce">
+        {/* Emoji - Larger for visibility */}
+        <div className="text-7xl mb-4 animate-bounce">
           {emojis[questionNumber - 1] || '😢'}
         </div>
 
-        {/* Question */}
-        <p className="text-xl md:text-2xl font-semibold text-gray-800 mb-6 font-romantic leading-relaxed">
+        {/* Question - Vibrant pink/red color for visibility */}
+        <p className="text-xl md:text-2xl font-semibold mb-6 font-romantic leading-relaxed"
+          style={{ color: '#e91e63', textShadow: '0 1px 2px rgba(0,0,0,0.1)' }}>
           {question}
         </p>
 
@@ -607,8 +597,8 @@ const MobileQuestionModal = ({ question, questionNumber, totalQuestions, onYes, 
           </div>
         </div>
 
-        {/* Fun hint */}
-        <p className="mt-4 text-xs text-gray-400 italic">
+        {/* Fun hint - Vibrant pink color */}
+        <p className="mt-4 text-sm italic" style={{ color: '#ec407a' }}>
           {questionNumber < 10 ? "The YES button is looking really nice right now... 👀" :
             questionNumber < 15 ? "You're really making this hard on both of us! 😤" :
               "Okay okay, I respect your determination! But still... 💕"}
@@ -661,11 +651,11 @@ const BlurredImageReveal = () => {
   const [popupStep, setPopupStep] = useState(0) // 0=none, 1=first confirm, 2=second confirm
   const [showDisclaimer, setShowDisclaimer] = useState(false) // Hidden by default
 
-  // Show disclaimer for 5 seconds only after image is revealed
+  // Show disclaimer for 4 seconds only after image is revealed
   useEffect(() => {
     if (!isBlurred) {
       setShowDisclaimer(true)
-      const timer = setTimeout(() => setShowDisclaimer(false), 5000)
+      const timer = setTimeout(() => setShowDisclaimer(false), 4000)
       return () => clearTimeout(timer)
     }
   }, [isBlurred])
@@ -680,7 +670,7 @@ const BlurredImageReveal = () => {
 
   const handleSecondYes = () => {
     setPopupStep(0)
-    setIsBlurred(false) // 5s smooth unblur via CSS transition
+    setIsBlurred(false) // 8s smooth unblur via CSS transition
   }
 
   const handleNo = () => {
@@ -704,7 +694,7 @@ const BlurredImageReveal = () => {
               objectFit: 'contain',
               maxHeight: '280px',
               filter: isBlurred ? 'blur(18px)' : 'blur(0px)',
-              transition: 'filter 5s ease-out'
+              transition: 'filter 8s ease-out'
             }}
           />
 
@@ -726,10 +716,10 @@ const BlurredImageReveal = () => {
           {isBlurred ? "A surprise for you 🎁" : "This rose is for you 🌹"}
         </p>
 
-        {/* AI disclaimer - shows for 5s only after reveal */}
+        {/* AI disclaimer - shows for 4s only after reveal */}
         {showDisclaimer && (
           <p className="text-[10px] text-gray-400 italic text-center animate-fade-in-up">
-            *this image is generated using AI
+            *this image is generating for you using AI
           </p>
         )}
       </div>
