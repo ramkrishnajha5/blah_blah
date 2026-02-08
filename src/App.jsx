@@ -1423,9 +1423,14 @@ const ProposalSection = ({ onAccept }) => {
           So here's the big question...
         </h2>
 
-        <h3 className="font-romantic text-3xl md:text-5xl lg:text-6xl text-pink-600 mb-8">
+        <h3 className="font-romantic text-3xl md:text-5xl lg:text-6xl text-pink-600 mb-4">
           Will you be my Valentine? 💖
         </h3>
+
+        {/* Option to say no */}
+        <p className="text-gray-500 text-sm mb-6 italic">
+          (If you don't want to, you can click on No... but I hope you won't! 🥺)
+        </p>
 
         {/* Fun message */}
         <p className="text-gray-600 mb-6 text-sm md:text-base">
