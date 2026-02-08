@@ -1428,7 +1428,7 @@ const ProposalSection = ({ onAccept }) => {
         </h3>
 
         {/* Option to say no */}
-        <p className="text-gray-500 text-sm mb-6 italic">
+        <p className="text-gray-600 text-base md:text-lg mb-6 font-semibold">
           (If you don't want to, you can click on No... but I hope you won't! 🥺)
         </p>
 
